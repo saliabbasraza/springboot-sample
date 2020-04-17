@@ -1,6 +1,7 @@
 package nz.co.warehousegroup.springboot_sample.user;
 
 import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<UserDto> getUsersByIds() {
+    public List<UserDto> getAllUsers() {
         return userService.getUsersByIds();
     }
 

@@ -1,7 +1,6 @@
 package nz.co.warehousegroup.springboot_sample;
 
 import io.swagger.annotations.ApiOperation;
-import nz.co.warehousegroup.springboot_sample.user.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,12 +13,6 @@ import java.net.UnknownHostException;
 @RequestMapping("")
 @RestController
 public class HomeController {
-
-    private final UserService userService;
-
-    public HomeController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping
     String index(HttpServletRequest request) {

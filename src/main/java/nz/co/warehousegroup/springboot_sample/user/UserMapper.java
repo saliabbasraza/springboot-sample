@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collection;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -18,9 +18,10 @@ public class UserMapper {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserDto convertToDto(User user, Collection<UserRole> userRoles) {
+    public UserDto convertToDto(User user, Set<UserRole> userRoles) {
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(user, userDto);
+        userDto.setPassword(null);
         if (!CollectionUtils.isEmpty(userRoles)) {
             userDto.setRoles(userRoles.stream().map(x -> x.getRole().getName()).collect(Collectors.toList()));
         }
