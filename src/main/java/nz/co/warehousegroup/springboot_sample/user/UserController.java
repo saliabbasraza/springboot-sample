@@ -25,8 +25,13 @@ public class UserController {
         return userService.getUsersByIds();
     }
 
-    @GetMapping("/{id}")
-    public UserDto getUser(@PathVariable(name = "id", required = true) Long id) {
-        return userService.get(id);
+//    @GetMapping("/{id}")
+//    public UserDto getUser(@PathVariable(name = "id", required = true) Long id) {
+//        return userService.get(id);
+//    }
+
+    @GetMapping("/{username}")
+    public UserDto getUserByUsername(@PathVariable(name = "username", required = true) String username) {
+        return userService.findByUsername(username);
     }
 }

@@ -4,6 +4,7 @@ import nz.co.warehousegroup.springboot_sample.role.Role;
 import nz.co.warehousegroup.springboot_sample.role.RoleRepository;
 import nz.co.warehousegroup.springboot_sample.role.UserRole;
 import nz.co.warehousegroup.springboot_sample.role.UserRolesRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -35,6 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Cacheable(value = "users", key = "#id")
     public UserDto get(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found: " + id));
         return userMapper.convertToDto(user, user.getUserRoles());
@@ -54,5 +56,12 @@ public class UserServiceImpl implements UserService {
         }
 
         return userMapper.convertToDto(user, userRoles);
+    }
+
+    @Override
+    @Cacheable(value = "users", key = "#username")
+    public UserDto findByUsername(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("User not found: " + username));
+        return userMapper.convertToDto(user, user.getUserRoles());
     }
 }

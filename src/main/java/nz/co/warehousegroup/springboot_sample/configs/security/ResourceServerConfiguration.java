@@ -29,7 +29,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/signup**", "/actuator/**", "/api-docs/**").permitAll()
-                .antMatchers("/api/user/**").hasAuthority("ADMIN")
+                .antMatchers("/api/user/**").permitAll()
                 .antMatchers("/api/blog/**").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/api/**").authenticated()
                 .anyRequest().authenticated()

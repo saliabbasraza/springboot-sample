@@ -12,7 +12,7 @@ This project makes use of **Project Lombok**, so you need to setup your IDE to u
 - Requires Java 8, Maven 4, Lombok
 - Checkout the project
 - navigate to **development** branch.
-- Navigate to project root, issue command:   **mvn spring-boot:run**
+- Navigate to project root, issue command:   ``mvn spring-boot:run``
 
 - Navigate to: http://localhost:8080/users
 

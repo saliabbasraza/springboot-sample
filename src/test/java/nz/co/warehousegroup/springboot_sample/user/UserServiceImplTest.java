@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 @DataJpaTest
@@ -46,6 +48,13 @@ class UserServiceImplTest {
 
     @Test
     void get() {
+        User user = new User(1l, "s.ali.abbas.raza@gmail.com", "123456");
+        given(userRepository.findById(user.getId())).willReturn(java.util.Optional.of(user));
+
+        userService.get(user.getId());
+        userService.get(user.getId());
+
+        verify(userRepository, times(1)).findById(user.getId());
     }
 
     @Test
