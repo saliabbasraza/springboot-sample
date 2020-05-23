@@ -31,7 +31,7 @@ public class UserController {
         return "Greetings from Spring Boot || Running on " + hostName;
     }
 
-    @RequestMapping("/users")
+    @RequestMapping("/user")
     public List<Integer> getUsersByIds() {
         return userService.getUserIds();
     }

@@ -56,6 +56,24 @@ More Details at:
 <br>https://kubernetes.io/docs/tutorials/kubernetes-basics/
 <br>https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 
+### CI/CD Using Jenkins Pipeline Feature
+Setup Jenkins using Docker container from: https://hub.docker.com/r/jenkins/jenkins
+- ```docker pull jenkins/jenkins```
+- Fireup Jenkins container by executing command below. ```sudo docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts```
+- this will automatically create a 'jenkins_home' docker volume on the host machine, that will survive the container stop/restart/deletion. Instructions here: https://github.com/jenkinsci/docker/blob/master/README.md
+- Follow installation steps to Install Jenkins. 
+- Note that we make use of Jenkins pipeline and following Declarative syntax. ``Jenkinsfile`` is already checked into root of project.   	
+
+### Keycloak
+- Installation 
+    - Bare Metal installation https://www.keycloak.org/getting-started/getting-started-zip
+    - Docker installation https://www.keycloak.org/getting-started/getting-started-docker
+- Login to keycloak and click on ``Add realm``.
+- Import ``keycloak-realm.json`` file.
+- Now to access ``http://localhost:8080/user/*`` you need to login to keycloak.
+    - Add user to keycloak goto ``Manage->Users`` and click on ``Add User`` and Give user ``admin`` role 
+
+
 ### Features already in Project:
 - Spring boot framework
 - Some unit test cases
@@ -63,15 +81,6 @@ More Details at:
 - Swagger Docs
 - Create an executable jar package using either **maven** or **gradle**
 - Deploy the jar using **Docker**
-
-### CI/CD Using Jenkins Pipeline Feature
-
-Setup Jenkins using Docker container from: https://hub.docker.com/r/jenkins/jenkins
-	- ```docker pull jenkins/jenkins```
-   	- Fireup Jenkins container by executing command below. ```sudo docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts```
-   	- this will automatically create a 'jenkins_home' docker volume on the host machine, that will survive the container stop/restart/deletion. Instructions here: https://github.com/jenkinsci/docker/blob/master/README.md
-	- Follow installation steps to Install Jenkins. 
-	- Note that we make use of Jenkins pipeline and following Declarative syntax. ``Jenkinsfile`` is already checked into root of project.   	
 
 ### Features to come:
 - Service Registory, Discovery and Invocation using **Consul**

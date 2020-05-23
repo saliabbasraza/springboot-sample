@@ -1,0 +1,35 @@
+api:
+  version: 1.0
+#server:
+#  port: 5000 #For Docker Deployment on AWS
+
+swagger:
+  enabled: true
+  title: jpa-spec-with-quartz-and-api API
+  description: Sample Swagger implementation for the `jpa-spec-with-quartz-and-api` service, leveraging annotations at the controller-method level.
+  useDefaultResponseMessages: false
+  enableUrlTemplating: false
+  deepLinking: true
+  defaultModelsExpandDepth: 1
+  defaultModelExpandDepth: 1
+  displayOperationId: false
+  displayRequestDuration: false
+  filter: false
+  maxDisplayedTags: 0
+  showExtensions: false
+
+
+# Keycloak connection url, realm
+keycloak:
+  auth-server-url: http://127.0.0.1:9080/auth
+  realm: springboot-sample
+  public-client: true
+  resource: springboot-sample
+
+  #security rules
+  security-constraints:
+    - authRoles:
+        - admin
+      securityCollections:
+        - patterns:
+            - /user/*
