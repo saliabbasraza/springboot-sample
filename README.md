@@ -115,6 +115,9 @@ More Details at:
 <br>https://www.toptal.com/spring/spring-boot-oauth2-jwt-rest-protection
 <br>https://docs.spring.io/spring-security/site/docs/5.0.5.RELEASE/reference/htmlsingle/#what-is-acegi-security
 
+### Swagger-OpenApi (Springdoc)
+Goto http://localhost:8080/swagger-ui.html
+
 ### Features to come:
 - Service Registory, Discovery and Invocation using **Consul**
 - **CI/CD** support to come later, this will require a build server VM on our computers i.e. **Jenkins**
